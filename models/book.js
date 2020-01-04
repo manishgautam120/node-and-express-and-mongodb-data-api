@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 //BookSchema
 
 var  bookSchema = mongoose.Schema({
-name :{
+title :{
     type: String,
     required :true
       },
@@ -42,4 +42,12 @@ var Book = module.exports= mongoose.model('Book', bookSchema);
 
 module.exports.getBooks = function(callback,limit){
   Book.find(callback).limit(limit);
+}
+module.exports.addBook = function(book, callback){
+  Book.create(book, callback);
+}
+//get Book by Id
+
+module.exports.getBookById = function(id,callback){
+  Book.findById(callback);
 }
